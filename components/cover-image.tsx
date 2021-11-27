@@ -9,9 +9,11 @@ type Props = {
 }
 
 const CoverImage = ({ title, src, slug }: Props) => {
-  const image = (
+  const image = !!src && (
     <Image
       src={src}
+      width={2000}
+      height={1000}
       alt={`Just an inspirational background for article - ${title}`}
       className={cn('shadow-small', {
         'hover:shadow-medium transition-shadow duration-200': slug,
