@@ -1,8 +1,8 @@
-const withPlugins = require('next-compose-plugins')
+// const withPlugins = require('next-compose-plugins')
 // const withPreact = require('next-plugin-preact');
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-})
+// const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  // enabled: process.env.ANALYZE === 'true',
+// })
 
 const nextConfig = {
   reactStrictMode: true,
@@ -17,23 +17,25 @@ const nextConfig = {
       use: ['@svgr/webpack'],
     })
 
-    if (!dev && !isServer) {
-      // Replace React with Preact only in client production build
-      Object.assign(config.resolve.alias, {
-        react: 'preact/compat',
-        'react-dom/test-utils': 'preact/test-utils',
-        'react-dom': 'preact/compat',
-      })
-    }
+    // if (!dev && !isServer) {
+    //   // Replace React with Preact only in client production build
+    //   Object.assign(config.resolve.alias, {
+    //     react: 'preact/compat',
+    //     'react-dom/test-utils': 'preact/test-utils',
+    //     'react-dom': 'preact/compat',
+    //   })
+    // }
 
     return config
   },
 }
 
-module.exports = withPlugins(
-  [
-    [withBundleAnalyzer],
-    // [withPreact],
-  ],
-  nextConfig
-)
+// module.exports = withPlugins(
+//   [
+//     [withBundleAnalyzer],
+//     // [withPreact],
+//   ],
+//   nextConfig
+// )
+
+module.exports = nextConfig;
