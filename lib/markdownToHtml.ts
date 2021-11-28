@@ -1,5 +1,5 @@
 // import { unified } from 'unified'
-import {remark} from 'remark'
+import { remark } from 'remark'
 import html from 'remark-html'
 
 // import rehypeStringify from 'rehype-stringify'
