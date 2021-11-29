@@ -1,7 +1,5 @@
 module.exports = {
-  // mode: 'jit',
-  purge: ['./components/**/*.tsx', './pages/**/*.tsx', './layouts/**/*.tsx', './lib/**/*.ts'],
-  darkMode: 'class',
+  purge: ['./components/**/*.tsx', './pages/**/*.tsx'],
   theme: {
     extend: {
       colors: {
