@@ -1,6 +1,5 @@
 import Container from './container'
 import cn from 'classnames'
-import { EXAMPLE_PATH } from '../lib/constants'
 
 type Props = {
   preview?: boolean
@@ -29,12 +28,13 @@ const Alert = ({ preview }: Props) => {
             </>
           ) : (
             <>
-              The source code for this blog is{' '}
+              Do you see something incorrect in a post? Create an issue or PR {' '}
               <a
-                href={`https://github.com/vercel/next.js/tree/canary/examples/${EXAMPLE_PATH}`}
-                className="underline hover:text-success duration-200 transition-colors"
+                href={`https://github.com/TimmersThomas/blog-timmersthomas-be-v2`}
+                className="underline hover:text-success duration-200 transition-colors  underline-offset-2"
+                target='_blank' rel='noopener'
               >
-                available on GitHub
+                on GitHub
               </a>
               .
             </>

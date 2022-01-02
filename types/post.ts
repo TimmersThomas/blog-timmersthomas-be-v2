@@ -1,3 +1,5 @@
+import { ReactElement } from 'react'
+import { Root } from 'rehype-format'
 import Author from './author'
 
 type PostType = {
