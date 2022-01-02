@@ -29,12 +29,13 @@ const Alert = ({ preview }: Props) => {
             </>
           ) : (
             <>
-              The source code for this blog is{' '}
+              Do you see something incorrect in a post? Create an issue or PR {' '}
               <a
-                href={`https://github.com/vercel/next.js/tree/canary/examples/${EXAMPLE_PATH}`}
+                href={`https://github.com/TimmersThomas/blog-timmersthomas-be-v2`}
                 className="underline hover:text-success duration-200 transition-colors"
+                target='_blank'  rel='noopener'
               >
-                available on GitHub
+                on GitHub
               </a>
               .
             </>

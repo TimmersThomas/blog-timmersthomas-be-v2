@@ -9,7 +9,6 @@ import { getPostBySlug, getAllPosts } from '../../lib/api'
 import PostTitle from '../../components/post-title'
 import Head from 'next/head'
 import { CMS_NAME } from '../../lib/constants'
-import markdownToHtml from '../../lib/markdownToHtml'
 import PostType from '../../types/post'
 
 type Props = {
@@ -71,13 +70,11 @@ export async function getStaticProps({ params }: Params) {
     'ogImage',
     'coverImage',
   ])
-  const content = await markdownToHtml(post.content || '')
 
   return {
     props: {
       post: {
         ...post,
-        content,
       },
     },
   }
