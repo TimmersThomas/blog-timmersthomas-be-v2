@@ -32,8 +32,8 @@ const Alert = ({ preview }: Props) => {
               Do you see something incorrect in a post? Create an issue or PR {' '}
               <a
                 href={`https://github.com/TimmersThomas/blog-timmersthomas-be-v2`}
-                className="underline hover:text-success duration-200 transition-colors"
-                target='_blank'  rel='noopener'
+                className="underline hover:text-success duration-200 transition-colors  underline-offset-2"
+                target='_blank' rel='noopener'
               >
                 on GitHub
               </a>
