@@ -1,19 +1,19 @@
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
-import Container from '../../components/container'
-import PostBody from '../../components/post-body'
-import Header from '../../components/header'
-import PostHeader from '../../components/post-header'
-import Layout from '../../components/layout'
+import Container from '../../components/structure/container'
+import PostBody from '../../components/post/post-body'
+import Header from '../../components/structure/header'
+import PostHeader from '../../components/post/post-header'
+import Layout from '../../components/structure/layout'
 import { getPostBySlug, getAllPosts } from '../../lib/api'
-import PostTitle from '../../components/post-title'
+import PostTitle from '../../components/post/post-title'
 import Head from 'next/head'
 import { CMS_TITLE } from '../../lib/constants'
-import PostType from '../../types/post'
+import {Post} from '../../types/post'
 
 type Props = {
-  post: PostType
-  morePosts: PostType[]
+  post: Post
+  morePosts: Post[]
   preview?: boolean
 }
 

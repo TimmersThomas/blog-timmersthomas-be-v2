@@ -1,8 +1,8 @@
-import markdownStyles from "./markdown-styles.module.css";
+import markdownStyles from "../markdown/markdown-styles.module.css";
 import ReactMarkdown from 'react-markdown'
-import { rehypePlugins, remarkPlugins } from '../lib/markdownToHtml'
-import { MarkdownPostCode } from "./markdown-post-code";
-import { MarkdownPostImage } from "./markdown-post-image";
+import { rehypePlugins, remarkPlugins } from '../../lib/markdownToHtml'
+import { MarkdownPostCode } from "../markdown/markdown-post-code";
+import { MarkdownPostImage } from "../markdown/markdown-post-image";
 
 type Props = {
   content: string;

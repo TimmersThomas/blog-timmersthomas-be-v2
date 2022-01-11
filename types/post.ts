@@ -1,18 +1,31 @@
-import { ReactElement } from 'react'
-import { Root } from 'rehype-format'
-import Author from './author'
+export type ImageMeta = {
+  size: {
+    width: number;
+    height: number;
+  },
+  credits: {
+    serviceName: string;
+    serviceLink: string;
+    createdByName: string;
+    createdByLink: string;
+  }
+};
 
-type PostType = {
-  slug: string
-  title: string
-  date: string
-  coverImage: string
-  author: Author
-  excerpt: string
+export type Author = {
+  name: string
+  picture: string
+};
+
+export type Post = {
+  slug: string;
+  title: string;
+  date: string;
+  coverImage: string;
+  coverImageMeta?: ImageMeta;
+  author: Author;
+  excerpt: string;
   ogImage: {
     url: string
-  }
-  content: string
-}
-
-export default PostType
+  };
+  content: string;
+};
