@@ -1,6 +1,6 @@
 import cn from 'classnames'
 import Link from 'next/link'
-import { ImageMeta } from '../../types/post'
+import { ImageMeta } from '../../@types/post'
 import TextLink from './textLink'
 
 type Props = {

@@ -2,7 +2,7 @@ import Avatar from "../generic/avatar";
 import DateFormatter from "../generic/date-formatter";
 import CoverImage from "../generic/cover-image";
 import Link from "next/link";
-import { Post } from "../../types/post";
+import { Post } from "../../@types/post";
 
 type HeroPostProps =
   Pick<Post,  "coverImage" | "coverImageMeta" | "date" | "excerpt" | "title" | "slug"> &

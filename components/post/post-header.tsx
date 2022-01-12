@@ -2,7 +2,7 @@ import Avatar from '../generic/avatar'
 import DateFormatter from '../generic/date-formatter'
 import CoverImage from '../generic/cover-image'
 import PostTitle from './post-title'
-import { Author } from '../../types/post'
+import { Author } from '../../@types/post'
 
 type Props = {
   title: string

@@ -6,7 +6,7 @@ import Layout from "../components/structure/layout";
 import { getAllPosts } from "../lib/api";
 import Head from "next/head";
 import { CMS_TITLE } from "../lib/constants";
-import { Post } from "../types/post";
+import { Post } from "../@types/post";
 
 type Props = {
   allPosts: Post[];

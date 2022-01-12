@@ -9,7 +9,7 @@ import { getPostBySlug, getAllPosts } from '../../lib/api'
 import PostTitle from '../../components/post/post-title'
 import Head from 'next/head'
 import { CMS_TITLE } from '../../lib/constants'
-import {Post} from '../../types/post'
+import {Post} from '../../@types/post'
 
 type Props = {
   post: Post
