@@ -16,16 +16,22 @@ export type Author = {
   picture: string
 };
 
-export type Post = {
+
+export type PostBase = {
   slug: string;
   title: string;
   date: string;
+
+}
+export type Post = PostBase & {
   coverImage: string;
   coverImageMeta?: ImageMeta;
-  author: Author;
+  author?: Author;
   excerpt: string;
   ogImage: {
     url: string
   };
   content: string;
 };
+
+export type PostPreview = Omit<Post, "ogImage" | "content">;

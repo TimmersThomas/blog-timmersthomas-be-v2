@@ -2,16 +2,7 @@ import Avatar from "../generic/avatar";
 import DateFormatter from "../generic/date-formatter";
 import CoverImage from "../generic/cover-image";
 import Link from "next/link";
-import { Author } from "../../@types/post";
-
-type Props = {
-  title: string;
-  coverImage: string;
-  date: string;
-  excerpt: string;
-  author?: Author;
-  slug: string;
-};
+import { PostPreview as PostPreviewType } from "../../@types/post";
 
 const PostPreview = ({
   title,
@@ -20,7 +11,7 @@ const PostPreview = ({
   excerpt,
   author,
   slug,
-}: Props) => {
+}: PostPreviewType) => {
   return (
     <div>
       <div className="mb-5">

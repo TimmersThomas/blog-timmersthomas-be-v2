@@ -2,11 +2,7 @@ import Avatar from "../generic/avatar";
 import DateFormatter from "../generic/date-formatter";
 import CoverImage from "../generic/cover-image";
 import Link from "next/link";
-import { Post } from "../../@types/post";
-
-type HeroPostProps =
-  Pick<Post,  "coverImage" | "coverImageMeta" | "date" | "excerpt" | "title" | "slug"> &
-  Partial<Pick<Post, "author">>;
+import { PostPreview } from "../../@types/post";
 
 const HeroPost = ({
   title,
@@ -16,7 +12,7 @@ const HeroPost = ({
   excerpt,
   author,
   slug,
-}: HeroPostProps) => {
+}: PostPreview) => {
   return (
     <section>
       <div className="mb-8 md:mb-16">

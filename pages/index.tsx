@@ -6,10 +6,10 @@ import Layout from "../components/structure/layout";
 import { getAllPosts } from "../lib/api";
 import Head from "next/head";
 import { CMS_TITLE } from "../lib/constants";
-import { Post } from "../@types/post";
+import { PostPreview } from "../@types/post";
 
 type Props = {
-  allPosts: Post[];
+  allPosts: PostPreview[];
 };
 
 const Index = ({ allPosts }: Props) => {
@@ -44,14 +44,14 @@ const Index = ({ allPosts }: Props) => {
 export default Index;
 
 export const getStaticProps = async () => {
-  const allPosts = getAllPosts([
-    "title",
-    "date",
-    "slug",
+  const allPosts = getAllPosts<PostPreview>([
     "author",
     "coverImage",
     "coverImageMeta",
+    "date",
     "excerpt",
+    "slug",
+    "title",
   ]);
 
   return {
