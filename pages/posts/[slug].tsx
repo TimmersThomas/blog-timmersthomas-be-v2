@@ -40,6 +40,7 @@ const Post = ({ post, morePosts, preview }: Props) => {
               <PostHeader
                 title={post.title}
                 coverImage={post.coverImage}
+                coverImageMeta={post.coverImageMeta}
                 date={post.date}
                 author={post.author}
               />
@@ -69,6 +70,7 @@ export async function getStaticProps({ params }: Params) {
     "content",
     "ogImage",
     "coverImage",
+    "coverImageMeta"
   ]);
 
   return {

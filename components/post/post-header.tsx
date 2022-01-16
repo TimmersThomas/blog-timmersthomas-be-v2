@@ -9,7 +9,7 @@ type Props = Pick<
   "title" | "coverImage" | "coverImageMeta" | "date" | "author"
 >;
 
-const PostHeader = ({ title, coverImage, date, author }: Props) => {
+const PostHeader = ({ title, coverImage, coverImageMeta, date, author }: Props) => {
   return (
     <>
       <PostTitle>{title}</PostTitle>
@@ -17,7 +17,7 @@ const PostHeader = ({ title, coverImage, date, author }: Props) => {
         {author && <Avatar name={author.name} picture={author.picture} />}
       </div>
       <div className="mb-8 md:mb-16 sm:mx-0">
-        <CoverImage title={title} src={coverImage} />
+        <CoverImage title={title} src={coverImage} imageMeta={coverImageMeta} />
       </div>
       <div className="max-w-2xl mx-auto">
         <div className="block md:hidden mb-6">

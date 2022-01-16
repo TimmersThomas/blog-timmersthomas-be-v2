@@ -3,6 +3,9 @@ title: 'Welcome...'
 excerpt: 'And.... goodbye!'
 coverImage: '/assets/blog/preview/cover.jpg'
 coverImageMeta:
+    size:
+        width: 2000
+        height: 1000
     credits:
         serviceName: Unplash
         serviceLink: https://unsplash.com/photos/hTeYcjviZ-s
