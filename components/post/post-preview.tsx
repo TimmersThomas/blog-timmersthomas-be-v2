@@ -1,4 +1,3 @@
-import Avatar from "../generic/avatar";
 import DateFormatter from "../generic/date-formatter";
 import CoverImage from "../generic/cover-image";
 import Link from "next/link";
@@ -30,7 +29,6 @@ const PostPreview = ({
         <DateFormatter dateString={date} />
       </div>
       <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
-      {author && <Avatar name={author.name} picture={author.picture} />}
     </div>
   );
 };
