@@ -16,9 +16,7 @@ const PostBody = ({ content }: Props) => {
         }}
         className={markdownStyles["markdown"]}
         rehypePlugins={rehypePlugins}
-        remarkPlugins={remarkPlugins}
-        children={content}
-      />
+        remarkPlugins={remarkPlugins}>{content}</ReactMarkdown>
     </div>
   );
 };

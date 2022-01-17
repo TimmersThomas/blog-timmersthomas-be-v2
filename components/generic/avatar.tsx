@@ -1,12 +1,10 @@
-type Props = {
-  name: string
-  picture: string
-}
+import { Author } from "../../@types/post"
+import Image from "next/image";
 
-const Avatar = ({ name, picture }: Props) => {
+const Avatar = ({ name, picture }: Author) => {
   return (
     <div className="flex items-center">
-      <img src={picture} className="w-12 h-12 rounded-full mr-4" alt={name} />
+      <Image src={picture} className="w-12 h-12 rounded-full mr-4" alt={name} width={100} height={100} layout="responsive" />
       <div className="text-xl font-bold">{name}</div>
     </div>
   )

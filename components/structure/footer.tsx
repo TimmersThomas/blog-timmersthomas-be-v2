@@ -14,7 +14,7 @@ const Footer = () => {
               title="You can find me on Github: @timmersthomas"
               className="mr-4 text-gray-600 hover:text-success duration-200 transition-colors"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
             >
               <svg
                 aria-hidden="true"
@@ -37,7 +37,7 @@ const Footer = () => {
               title="You can find me on twitter: @timmersthomas"
               className="mr-4 text-gray-600 hover:text-success duration-200 transition-colors"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
             >
               <svg
                 aria-hidden="true"
@@ -60,7 +60,7 @@ const Footer = () => {
               title="You can find me on LinkedIn: @timmersthomas"
               className="mr-4 text-gray-600 hover:text-success duration-200 transition-colors"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
             >
               <svg
                 aria-hidden="true"
@@ -83,7 +83,7 @@ const Footer = () => {
               title="You can find me on dev.to: @timmersthomas"
               className="mr-4 text-gray-600 hover:text-success duration-200 transition-colors"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
             >
               <svg
                 aria-hidden="true"
@@ -106,7 +106,7 @@ const Footer = () => {
               title="You can find me on Instagram: @timmersthomas"
               className="text-gray-600 hover:text-success duration-200 transition-colors"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
             >
               <svg
                 aria-hidden="true"
