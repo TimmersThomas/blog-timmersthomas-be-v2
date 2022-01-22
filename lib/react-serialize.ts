@@ -4,6 +4,7 @@
  */
 import * as React from 'react';
 import { ReactElement } from 'react';
+import { nanoid } from 'nanoid'
 
 type ObjectType = {
     [index: string]: any;
@@ -24,17 +25,6 @@ type ReviverOptions = {
 type DeserializationOpts = {
     components?: { [type: string]: React.ComponentType };
     reviver?: (args: ReviverOptions) => ReviverOptions
-}
-
-function makeid(length: number): string {
-    var result = '';
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for (var i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() *
-            charactersLength));
-    }
-    return result;
 }
 
 type element = DeserializableComponent[] | DeserializableComponent | string | null;
@@ -63,7 +53,7 @@ function deserializeElement<T>(element: element, options: DeserializationOpts = 
     let type: React.ComponentType<{}> | string = components[elementType] || elementType.toLowerCase()
 
     if (props.children) {
-        props = { ...props, children: deserializeElement(props.children, options, makeid(16)) as DeserializableComponent[] }
+        props = { ...props, children: deserializeElement(props.children, options, nanoid()) as DeserializableComponent[] }
     }
 
     if (reviver) {
@@ -102,5 +92,5 @@ export const serialize = <T extends React.Component | JSX.Element>(component: T)
 export const deserialize = <T extends React.ReactElement<unknown>>(serializedComponent: string, options?: DeserializationOpts): T => {
     const componentData = JSON.parse(serializedComponent);
 
-    return deserializeElement(componentData, options, makeid(16)) as unknown as T;
+    return deserializeElement(componentData, options, nanoid()) as unknown as T;
 }
