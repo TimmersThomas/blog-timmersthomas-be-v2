@@ -10,6 +10,9 @@ import PostTitle from "../../components/post/post-title";
 import Head from "next/head";
 import { CMS_TITLE } from "../../lib/constants";
 import { Post } from "../../@types/post";
+import { parseMarkdownToHtml } from "../../lib/markdownToHtml";
+import { serialize, deserialize } from "../../lib/react-serialize";
+import { getCustomReactComponents } from "../../lib/customMarkdownComponents";
 
 type Props = {
   post: Post;
@@ -17,8 +20,12 @@ type Props = {
   preview?: boolean;
 };
 
-const Post = ({ post, morePosts, preview }: Props) => {
+const Post = ({ post, preview }: Props) => {
   const router = useRouter();
+  const content = deserialize(post.content, {
+    components: getCustomReactComponents()
+  });
+
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
@@ -44,7 +51,7 @@ const Post = ({ post, morePosts, preview }: Props) => {
                 date={post.date}
                 author={post.author}
               />
-              <PostBody content={post.content} />
+              <PostBody content={content} />
             </article>
           </>
         )}
@@ -70,13 +77,16 @@ export async function getStaticProps({ params }: Params) {
     "content",
     "ogImage",
     "coverImage",
-    "coverImageMeta"
+    "coverImageMeta",
   ]);
+
+  const parsedContent = await (await parseMarkdownToHtml(post.content)).result;
 
   return {
     props: {
       post: {
         ...post,
+        content: serialize(parsedContent as unknown as JSX.Element),
       },
     },
   };

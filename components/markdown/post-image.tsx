@@ -1,8 +1,11 @@
-import { Components } from "react-markdown";
 import Image from "next/image";
+import { ElementType, FC } from "react";
 import Zoom from "react-medium-image-zoom";
 
-export const MarkdownPostImage: Components["img"] = ({ src, alt }) => {
+export const PostImageMarkdownName = "img";
+export const PostImageComponentName = "PostImage";
+
+export const PostImage: FC<JSX.IntrinsicElements["img"]> = ({ src, alt }) => {
   if (src === undefined) {
     return <></>;
   }

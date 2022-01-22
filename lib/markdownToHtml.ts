@@ -1,43 +1,48 @@
-import { unified } from 'unified'
+import { Preset, unified } from 'unified'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import rehypeFormat from 'rehype-format'
-import rehypeStringify from 'rehype-stringify'
 import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
+// import rehypeShiki from "@leafac/rehype-shiki";
+import rehypeReact from "rehype-react";
+import { createElement } from 'react'
+import {getCustomRehypeComponents} from "./customMarkdownComponents";
+// import rehypeHighlight from 'rehype-highlight';
+// import highlightTs from 'highlight.js/lib/languages/typescript'
+// import highlightJs from 'highlight.js/lib/languages/javascript'
+// import highlightJson from 'highlight.js/lib/languages/json'
+// import highlightScss from 'highlight.js/lib/languages/scss'
+// import highlightBash from 'highlight.js/lib/languages/bash'
+// import highlightYaml from 'highlight.js/lib/languages/yaml'
+// import { LanguageFn } from 'highlight.js'
 
-export const rehypePlugins: [() => void,Record<string, Boolean|string|Number> | undefined][] = [
-  [rehypeSlug, undefined],
-  [rehypeFormat, undefined]
+
+
+
+const rehypePlugins: Preset[] = [
+  {
+    plugins: [rehypeSlug]
+  },
+  {
+    plugins: [rehypeFormat]
+  }
 ]
-export const remarkPlugins: [() => void,Record<string, Boolean|string|Number> | undefined][] = [
-  [remarkGfm, undefined]
+
+const remarkPlugins: Preset[] = [
+  {
+    plugins: [remarkGfm]
+  },
 ]
 
 export const parseMarkdownToHtml = async (markdown: string) => {
   const engine = await unified()
     .use(remarkParse)
-    .use(remarkRehype);
+    .use(remarkRehype)
+    // .use(rehypeShiki, { highlighter: await getHighlighter({ theme: "light-plus" }) });
 
-  rehypePlugins.forEach(([plugin, options]) => {
-    if (options !== undefined){
-      engine.use<Record<string,Boolean|string|Number>[]> (plugin, {
-        ...options
-      });
-    } else {
-      engine.use(plugin);
-    }
-  });
-
-  remarkPlugins.forEach(([plugin, options]) => {
-    if (options !== undefined){
-      engine.use<Record<string,Boolean|string|Number>[]> (plugin, {
-        ...options
-      });
-    } else {
-      engine.use(plugin);
-    }
-  });
+  rehypePlugins.forEach(engine.use);
+  remarkPlugins.forEach(engine.use);
 
   // engine.use(rehypeReact, {
   //   createElement: createElement,
@@ -47,7 +52,11 @@ export const parseMarkdownToHtml = async (markdown: string) => {
   //   }
 
   // })
-  engine.use(rehypeStringify)
 
-  return await engine.process(markdown);
+  engine.use(rehypeReact, {
+    createElement: createElement,
+    components: getCustomRehypeComponents()
+  })
+
+  return engine.processSync(markdown);
 }
