@@ -6,9 +6,9 @@ const Intro = () => {
       <h1 className="text-center md:text-left text-4xl md:text-6xl font-bold tracking-tighter leading-tight md:pr-8">
         Just a simple <span className="text-3xl italic">&apos;tech&apos;</span> blog
       </h1>
-      <h4 className="text-center md:text-left text-lg mt-5 md:pl-8">
+      <span className="text-center md:text-left text-lg mt-5 md:pl-8">
         by <TextLink href="https://timmersthomas.be" target="_blank" rel="noopener" >Timmers Thomas</TextLink>
-      </h4>
+      </span>
     </section>
   )
 }
