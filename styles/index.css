@@ -15,4 +15,5 @@
 /* Your own custom utilities */
 @import "react-medium-image-zoom/dist/styles.css";
 
-@import 'highlight.js/styles/github.css';
+@import "prism-themes/themes/prism-vsc-dark-plus.css";
+@import "prismjs/plugins/toolbar/prism-toolbar.css";

@@ -80,7 +80,7 @@ export async function getStaticProps({ params }: Params) {
     "coverImageMeta",
   ]);
 
-  const parsedContent = await (await parseMarkdownToHtml(post.content)).result;
+  const parsedContent = (await parseMarkdownToHtml(post.content)).result;
 
   return {
     props: {
