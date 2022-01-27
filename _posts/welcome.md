@@ -1,16 +1,16 @@
 ---
 title: 'Welcome...'
 excerpt: 'And.... goodbye!'
-coverImage: '/assets/blog/preview/cover.jpg'
+coverImage: '/assets/blog/welcome/hello.jpg'
 coverImageMeta:
     size:
         width: 2000
         height: 1000
     credits:
         serviceName: Unplash
-        serviceLink: https://unsplash.com/photos/hTeYcjviZ-s
-        createdByName: test
-        createdByLink: ...
+        serviceLink: https://unsplash.com/photos/ddamygbOo1I
+        createdByName: Ioana Cristiana
+        createdByLink: https://unsplash.com/@yoyoqua
 
 date: '2022-01-04T21:00:00Z'
 author:
