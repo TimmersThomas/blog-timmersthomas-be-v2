@@ -15,7 +15,7 @@ type Props = {
 
 const Index: FC<Props> = ({ allPosts }: Props) => {
   const heroPost = allPosts[0];
-  console.log(heroPost);
+
   const morePosts = allPosts.slice(1);
   return (
     <>
