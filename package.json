@@ -1,10 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next",
+    "start": "next-remote-watch ./_posts",
     "analyze": "ANALYZE=true yarn build",
     "build": "next build",
-    "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc"
   },
@@ -42,6 +41,7 @@
     "eslint": "^8.8.0",
     "eslint-config-next": "12.0.9",
     "next-compose-plugins": "^2.2.1",
+    "next-remote-watch": "^1.0.0",
     "node-fetch": ">=3.2.0",
     "postcss": "^8.4.5",
     "typescript": "^4.5.5"

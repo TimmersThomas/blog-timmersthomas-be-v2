@@ -1,5 +1,5 @@
 module.exports = {
-  content: ['./components/**/*.tsx', './pages/**/*.tsx', './_posts/**/*.tsx'],
+  content: ['./src/**/*.tsx', './_posts/**/*.tsx'],
   theme: {
     extend: {
       colors: {
