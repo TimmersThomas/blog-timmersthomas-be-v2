@@ -1,6 +1,7 @@
 import cn from "classnames";
 import Link from "next/link";
-import Image from "next/image";
+import NextImage from "next/image";
+import Zoom from "react-medium-image-zoom";
 import { ImageMeta } from "@/@types/post";
 import { TextLink } from "@/components/generic/textLink";
 import { ConditionalWrapper } from "@/components/generic/conditional-wrapper";
@@ -10,17 +11,23 @@ type Props = {
   imageMeta?: ImageMeta;
   title: string;
   src: string;
+  alt?: string;
   slug?: string;
+  priority: boolean;
+  zoom: boolean;
 };
 
 export const CoverImage: FC<Props> = ({
   title,
   src,
+  alt,
   slug,
   imageMeta,
+  priority = false,
+  zoom = false,
 }: Props) => {
   return (
-    <div className="sm:mx-0">
+    <div className={`sm:mx-0`}>
       <figure>
         <ConditionalWrapper
           condition={!!slug}
@@ -30,56 +37,71 @@ export const CoverImage: FC<Props> = ({
             </Link>
           )}
         >
-          {!!imageMeta && !!imageMeta.size ? (
-            <Image
-              src={src}
-              alt={`Cover Image for ${title} - next/image`}
-              className={cn("shadow-small", {
-                "hover:shadow-medium transition-shadow duration-200": slug,
-              })}
-              width={imageMeta.size.width}
-              height={imageMeta.size.height}
-            />
-          ) : (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={src}
-              alt={`Cover Image for ${title} - img`}
-              className={cn("shadow-small", {
-                "hover:shadow-medium transition-shadow duration-200": slug,
-              })}
-            />
-          )}
+          <ConditionalWrapper
+            condition={zoom}
+            wrap={(childeren) => <Zoom>{childeren}</Zoom>}
+          >
+            {!!imageMeta && !!imageMeta.size ? (
+              <NextImage
+                src={src}
+                alt={`${title}`}
+                className={cn("shadow-small", {
+                  "hover:shadow-medium transition-shadow duration-200": slug,
+                })}
+                width={imageMeta.size.width}
+                height={imageMeta.size.height}
+                priority={priority}
+              />
+            ) : (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={src}
+                alt={`${title}`}
+                className={cn("shadow-small", {
+                  "hover:shadow-medium transition-shadow duration-200": slug,
+                })}
+              />
+            )}
+          </ConditionalWrapper>
         </ConditionalWrapper>
-        {!!imageMeta && !!imageMeta.credits && (
+        {(!!alt || (!!imageMeta && !!imageMeta.credits)) && (
           <figcaption className="mt-3 text-gray-700 text-sm text-center italic">
-            Image
-            {imageMeta.credits.createdByLink && (
+            {!!alt && (
               <>
-                {" "}
-                by{" "}
-                <TextLink
-                  href={imageMeta.credits.createdByLink}
-                  target="_blank"
-                  rel="noopener"
-                >
-                  {imageMeta.credits.createdByName ||
-                    imageMeta.credits.createdByLink}
-                </TextLink>
+                {alt} <br />
               </>
             )}
-            {imageMeta.credits.serviceLink && (
+            {!!imageMeta && !!imageMeta.credits && (
               <>
-                {" "}
-                from{" "}
-                <TextLink
-                  href={imageMeta.credits.serviceLink}
-                  target="_blank"
-                  rel="noopener"
-                >
-                  {imageMeta.credits.serviceName ||
-                    imageMeta.credits.serviceLink}
-                </TextLink>
+                Credits: image
+                {imageMeta.credits.createdByLink && (
+                  <>
+                    {" "}
+                    by{" "}
+                    <TextLink
+                      href={imageMeta.credits.createdByLink}
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      {imageMeta.credits.createdByName ||
+                        imageMeta.credits.createdByLink}
+                    </TextLink>
+                  </>
+                )}
+                {imageMeta.credits.serviceLink && (
+                  <>
+                    {" "}
+                    from{" "}
+                    <TextLink
+                      href={imageMeta.credits.serviceLink}
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      {imageMeta.credits.serviceName ||
+                        imageMeta.credits.serviceLink}
+                    </TextLink>
+                  </>
+                )}
               </>
             )}
           </figcaption>

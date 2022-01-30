@@ -3,12 +3,14 @@ export type ImageMeta = {
     width: number;
     height: number;
   },
-  credits: {
-    serviceName: string;
-    serviceLink: string;
-    createdByName: string;
-    createdByLink: string;
-  }
+  credits?: ImageMetaCredits;
+};
+
+export type ImageMetaCredits = {
+  serviceName?: string;
+  serviceLink?: string;
+  createdByName?: string;
+  createdByLink?: string;
 };
 
 export type Author = {

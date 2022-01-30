@@ -35,7 +35,7 @@ export const Meta: FC = () => {
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       <meta
         name="description"
-        content='Writing/thinking small articles about a subject that caught my interest'
+        content='Trying to write some interesting articles on this simple tech blog by Thomas Timmers.'
       />
       <meta property="og:image" content={HOME_OG_IMAGE_URL} />
     </Head>
