@@ -1,5 +1,4 @@
-
-import {PostTitle} from "@/components/post/post-title";
+import { PostTitle } from "@/components/post/post-title";
 import { Post } from "@/@types/post";
 import { FC } from "react";
 import { Avatar } from "@/components/generic/avatar";
@@ -11,7 +10,13 @@ type Props = Pick<
   "title" | "coverImage" | "coverImageMeta" | "date" | "author"
 >;
 
-export const PostHeader : FC<Props> = ({ title, coverImage, coverImageMeta, date, author }: Props) => {
+export const PostHeader: FC<Props> = ({
+  title,
+  coverImage,
+  coverImageMeta,
+  date,
+  author,
+}: Props) => {
   return (
     <>
       <PostTitle>{title}</PostTitle>
@@ -19,7 +24,13 @@ export const PostHeader : FC<Props> = ({ title, coverImage, coverImageMeta, date
         {author && <Avatar name={author.name} picture={author.picture} />}
       </div>
       <div className="mb-8 md:mb-16 sm:mx-0">
-        <CoverImage title={title} src={coverImage} imageMeta={coverImageMeta} />
+        <CoverImage
+          title={title}
+          src={coverImage}
+          imageMeta={coverImageMeta}
+          priority={true}
+          zoom={false}
+        />
       </div>
       <div className="max-w-2xl mx-auto">
         <div className="block md:hidden mb-6">
