@@ -7,7 +7,7 @@ import { ReactElement } from 'react';
 import { nanoid } from 'nanoid'
 
 type ObjectType = {
-    [index: string]: any;
+    [index: string]: unknown;
 }
 
 type DeserializableComponent = {
@@ -17,7 +17,7 @@ type DeserializableComponent = {
 
 type ReviverOptions = {
     type: string | React.ComponentType,
-    props: { children: DeserializableComponent[] & ObjectType },
+    props: { children: DeserializableComponent[] } & ObjectType,
     key: string | number,
     components: { [type: string]: React.ComponentType }
 }
@@ -27,9 +27,10 @@ type DeserializationOpts = {
     reviver?: (args: ReviverOptions) => ReviverOptions
 }
 
-type element = DeserializableComponent[] | DeserializableComponent | string | null;
-function deserializeElement(element: element, options: DeserializationOpts = {}, key: string | number): element | ReactElement {
-    let { components = {}, reviver } = options
+type Element = DeserializableComponent[] | DeserializableComponent | string | null;
+function deserializeElement(element: Element, key: string | number, options: DeserializationOpts = {}): Element | ReactElement {
+    let { components = {} } = options
+    const { reviver } = options
 
     if (typeof element !== "object") {
         return element
@@ -40,7 +41,7 @@ function deserializeElement(element: element, options: DeserializationOpts = {},
     }
 
     if (element instanceof Array) {
-        return element.map((el, i) => deserializeElement(el, options, i) as DeserializableComponent)
+        return element.map((el, i) => deserializeElement(el, i, options) as DeserializableComponent)
     }
 
     let { props } = element;
@@ -50,29 +51,30 @@ function deserializeElement(element: element, options: DeserializationOpts = {},
         throw new Error("Deserialization error: element type must be string")
     }
 
-    let type: React.ComponentType<{}> | string = components[elementType] || elementType.toLowerCase()
+    let type: React.ComponentType | string = components[elementType] || elementType.toLowerCase()
 
     if (props.children) {
-        props = { ...props, children: deserializeElement(props.children, options, nanoid()) as DeserializableComponent[] }
+        props = { ...props, children: deserializeElement(props.children, nanoid(), options) as DeserializableComponent[] }
     }
 
     if (reviver) {
+        // eslint-disable-next-line no-param-reassign
         ({ type, props, key, components } = reviver({ type, props, key, components }))
     }
 
     return React.createElement(type, { ...props, key })
 }
 
-export const serialize = <T extends React.Component | JSX.Element>(component: T) => {
-    const getName = (value: string | Function) => {
+export const serialize = <T extends React.Component | JSX.Element>(component: T): string => {
+    const getName = (value: string | unknown): string | unknown=> {
         if (typeof value === 'string') {
             return value
-        } else if (typeof value === 'function') {
+        } if (typeof value === 'function') {
             return value.name
         }
         return value
     }
-    const replacer = (key: string, value: any) => {
+    const replacer = (key: string, value: unknown): string | unknown => {
         switch (key) {
             case "type":
                 return getName(value);
@@ -80,7 +82,7 @@ export const serialize = <T extends React.Component | JSX.Element>(component: T)
             case "_store":
             case "ref":
             case "key":
-                return
+                return undefined;
             default:
                 return value
         }
@@ -92,5 +94,5 @@ export const serialize = <T extends React.Component | JSX.Element>(component: T)
 export const deserialize = <T extends React.ReactElement<unknown>>(serializedComponent: string, options?: DeserializationOpts): T => {
     const componentData = JSON.parse(serializedComponent);
 
-    return deserializeElement(componentData, options, nanoid()) as unknown as T;
+    return deserializeElement(componentData, nanoid(), options) as unknown as T;
 }

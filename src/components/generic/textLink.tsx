@@ -1,8 +1,7 @@
 import cn from 'classnames'
 import { FC, HTMLProps } from 'react'
 
-export const TextLink: FC<HTMLProps<HTMLAnchorElement>> = ({ className, rel, target, href, children, ...props }: HTMLProps<HTMLAnchorElement>) => {
-  return (
+export const TextLink: FC<HTMLProps<HTMLAnchorElement>> = ({ className, rel, target, href, children, ...props }: HTMLProps<HTMLAnchorElement>) => (
     <a
       rel={rel || 'noopener'}
       target={target || '_blank'}
@@ -20,4 +19,3 @@ export const TextLink: FC<HTMLProps<HTMLAnchorElement>> = ({ className, rel, tar
       {children}
     </a>
   )
-}

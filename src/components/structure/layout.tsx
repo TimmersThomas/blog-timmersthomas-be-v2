@@ -8,8 +8,7 @@ type Props = {
   children: React.ReactNode
 }
 
-export const Layout: FC<Props> = ({ preview, children }: Props) => {
-  return (
+export const Layout: FC<Props> = ({ preview, children }: Props) => (
     <>
       <Meta />
       <div className="min-h-screen">
@@ -19,4 +18,3 @@ export const Layout: FC<Props> = ({ preview, children }: Props) => {
       <Footer />
     </>
   )
-}

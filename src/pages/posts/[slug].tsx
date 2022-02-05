@@ -9,16 +9,16 @@ import { getPostBySlug, getAllPosts } from "@/lib/api";
 import { PostTitle } from "@/components/post/post-title";
 import Head from "next/head";
 import { CMS_TITLE } from "@/lib/constants";
-import { Post } from "@/@types/post";
+import { Post as PostType } from "@/@types/post";
 import { parseMarkdownToHtml } from "@/lib/markdownToHtml";
 import { serialize, deserialize } from "@/lib/react-serialize";
 import { getCustomReactComponents } from "@/lib/customMarkdownComponents";
 import { FC } from "react";
 
 type Props = {
-  post: Post;
-  morePosts: Post[];
-  preview?: boolean;
+  post: PostType;
+  // morePosts: Post[];
+  preview: boolean;
 };
 
 const Post: FC<Props> = ({ post, preview }: Props) => {
@@ -37,8 +37,7 @@ const Post: FC<Props> = ({ post, preview }: Props) => {
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
         ) : (
-          <>
-            <article className="mb-32">
+          <article className="mb-32">
               <Head>
                 <title>
                   {post.title} | {CMS_TITLE}
@@ -54,7 +53,6 @@ const Post: FC<Props> = ({ post, preview }: Props) => {
               />
               <PostBody content={content} />
             </article>
-          </>
         )}
       </Container>
     </Layout>
@@ -70,7 +68,7 @@ type Params = {
 };
 
 export async function getStaticProps({ params }: Params) {
-  const post = getPostBySlug<Post>(params.slug, [
+  const post = getPostBySlug<PostType>(params.slug, [
     "title",
     "date",
     "slug",
@@ -94,16 +92,14 @@ export async function getStaticProps({ params }: Params) {
 }
 
 export async function getStaticPaths() {
-  const posts = getAllPosts<Post>(["slug"]);
+  const posts = getAllPosts<PostType>(["slug"]);
 
   return {
-    paths: posts.map((post) => {
-      return {
+    paths: posts.map((post) => ({
         params: {
           slug: post.slug,
         },
-      };
-    }),
+      })),
     fallback: false,
   };
 }

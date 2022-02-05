@@ -18,8 +18,7 @@ const Index: FC<Props> = ({ allPosts }: Props) => {
 
   const morePosts = allPosts.slice(1);
   return (
-    <>
-      <Layout>
+    <Layout>
         <Head>
           <title>{CMS_TITLE}</title>
         </Head>
@@ -38,7 +37,6 @@ const Index: FC<Props> = ({ allPosts }: Props) => {
           {morePosts.length > 0 && <MoreStories posts={morePosts} />}
         </Container>
       </Layout>
-    </>
   );
 };
 

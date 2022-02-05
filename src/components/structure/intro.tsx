@@ -1,8 +1,7 @@
 import { FC } from "react";
 import {TextLink} from "@/components/generic/textLink";
 
-export const Intro: FC = () => {
-  return (
+export const Intro: FC = () => (
     <section>
       <h1 className="flex-col md:flex-row flex-wrap	 flex items-baseline content-end md:justify-between mt-16 mb-16 md:mb-12">
         <span className="text-center md:text-left text-4xl md:text-6xl font-bold tracking-tighter leading-tight md:pr-8 w-full md:w-auto">
@@ -22,4 +21,3 @@ export const Intro: FC = () => {
       </h1>
     </section>
   );
-};

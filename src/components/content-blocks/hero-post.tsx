@@ -13,8 +13,7 @@ export const HeroPost: FC<PostPreview> = ({
   excerpt,
   author,
   slug,
-}: PostPreview) => {
-  return (
+}: PostPreview) => (
     <section>
       <div className="mb-8 md:mb-16">
         <CoverImage
@@ -22,15 +21,15 @@ export const HeroPost: FC<PostPreview> = ({
           src={coverImage}
           slug={slug}
           imageMeta={coverImageMeta}
-          priority={true}
+          priority
           zoom={false}
         />
       </div>
       <div className="md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8 mb-20 md:mb-28">
         <div>
           <h2 className="mb-4 text-4xl lg:text-6xl leading-tight">
-            <Link as={`/posts/${slug}`} href="/posts/[slug]">
-              <a className="hover:underline">{title}</a>
+            <Link as={`/posts/${slug}`} href="/posts/[slug]" passHref>
+              <a className="hover:underline" >{title}</a>
             </Link>
           </h2>
           <div className="mb-4 md:mb-0 text-lg">
@@ -45,4 +44,3 @@ export const HeroPost: FC<PostPreview> = ({
       </div>
     </section>
   );
-};

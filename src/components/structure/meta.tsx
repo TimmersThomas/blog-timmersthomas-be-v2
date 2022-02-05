@@ -2,8 +2,7 @@ import Head from 'next/head'
 import { HOME_OG_IMAGE_URL } from '@/lib/constants'
 import { FC } from 'react'
 
-export const Meta: FC = () => {
-  return (
+export const Meta: FC = () => (
     <Head>
       <link
         rel="apple-touch-icon"
@@ -28,7 +27,7 @@ export const Meta: FC = () => {
         href="/favicon/safari-pinned-tab.svg"
         color="#000000"
       />
-      <link rel="shortcut icon" href="/favicon/favicon.ico" />
+      <link rel="icon" href="/favicon/favicon.ico" />
       <meta name="msapplication-TileColor" content="#000000" />
       <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
       <meta name="theme-color" content="#000" />
@@ -40,4 +39,3 @@ export const Meta: FC = () => {
       <meta property="og:image" content={HOME_OG_IMAGE_URL} />
     </Head>
   )
-}

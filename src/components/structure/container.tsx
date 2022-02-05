@@ -4,6 +4,4 @@ type Props = {
   children?: ReactNode
 }
 
-export const Container: FC = ({ children }: Props) => {
-  return <div className="container mx-auto px-5">{children}</div>
-}
+export const Container: FC = ({ children }: Props) => <div className="container mx-auto px-5">{children}</div>

@@ -5,10 +5,8 @@ type Props<T = unknown> = {
   content: ReactElement<T> | string;
 };
 
-export const PostBody: FC<Props< unknown>> = ({ content }: Props) => {
-  return (
+export const PostBody: FC<Props< unknown>> = ({ content }: Props) => (
     <div className="max-w-2xl mx-auto">
-      <div className={markdownStyles["markdown"]}>{content}</div>
+      <div className={markdownStyles.markdown}>{content}</div>
     </div>
   );
-};

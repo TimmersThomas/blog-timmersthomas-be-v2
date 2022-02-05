@@ -8,6 +8,8 @@ import rehypeFormat from 'rehype-format'
 import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
 import rehypeReact from "rehype-react";
+
+// eslint-disable-next-line import/no-unresolved
 import rehypePrismGenerator from 'rehype-prism-plus/generator';
 import { refractor } from 'refractor/lib/core';
 
@@ -60,7 +62,7 @@ export const parseMarkdownToHtml = async (markdown: string) => {
   remarkPlugins.forEach(engine.use);
 
   engine.use(rehypeReact, {
-    createElement: createElement,
+    createElement,
     components: getCustomRehypeComponents()
   })
 

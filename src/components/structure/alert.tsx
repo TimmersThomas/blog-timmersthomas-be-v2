@@ -6,8 +6,7 @@ type Props = {
   preview?: boolean;
 };
 
-export const Alert = ({ preview }: Props) => {
-  return (
+export const Alert = ({ preview }: Props) => (
     <div
       className={cn("border-b", {
         "bg-accent-7 border-accent-7 text-white": preview,
@@ -31,7 +30,7 @@ export const Alert = ({ preview }: Props) => {
             <>
               Do you see something incorrect in a post? Create an issue or PR{" "}
               <TextLink
-                href={`https://github.com/TimmersThomas/blog-timmersthomas-be-v2`}
+                href="https://github.com/TimmersThomas/blog-timmersthomas-be-v2"
                 target="_blank"
                 rel="noopener"
               >
@@ -43,5 +42,4 @@ export const Alert = ({ preview }: Props) => {
         </div>
       </Container>
     </div>
-  );
-};
+  )

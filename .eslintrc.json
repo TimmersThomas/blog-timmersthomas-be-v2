@@ -1,3 +1,68 @@
 {
-  "extends": "next/core-web-vitals"
+  "plugins": ["@typescript-eslint", "react", "react-perf", "jsx-a11y"],
+  "extends": [
+    "eslint:recommended",
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
+
+    "airbnb",
+    "airbnb-typescript",
+
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+
+    "plugin:react-hooks/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-explicit-any": "error",
+    "import/prefer-default-export": "off",
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    "jsx-a11y/anchor-is-valid": [ "error", {
+      "components": [ "Link" ],
+      "specialLink": [ "hrefLeft", "hrefRight" ],
+      "aspects": [ "invalidHref", "preferButton" ]
+    }],
+    "react/prop-types": "off",
+    "react/require-default-props": "off",
+    "react/jsx-props-no-spreading": [
+      "error",
+      {
+        "html": "ignore"
+      }
+    ]
+    // "@typescript-eslint/explicit-function-return-type": [
+    //   "error",
+    //   {
+    //     "allowExpressions": true
+    //   }
+    // ]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  }
 }

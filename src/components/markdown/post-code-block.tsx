@@ -268,12 +268,12 @@ const extractLanguageFromClass = (classname?: string): keyof typeof supportedLan
   return undefined;
 }
 
-export const PostCodeBlock: FC<JSX.IntrinsicElements["code"]> = (props) => {
-  const chosenLanguage = extractLanguageFromClass(props.className);
+export const PostCodeBlock: FC<JSX.IntrinsicElements["code"]> = ({className, children}) => {
+  const chosenLanguage = extractLanguageFromClass(className);
   const languageIndicator = supportedLanguages[chosenLanguage || 'none']
 
-  return <div className={`code-toolbar ${props.className}`}>
-      <pre className={props.className}>{props.children}</pre>
+  return <div className={`code-toolbar ${className}`}>
+      <pre className={className}>{children}</pre>
       <div className="toolbar">
         {chosenLanguage && <div className="toolbar-item">
             <span>{languageIndicator}</span>

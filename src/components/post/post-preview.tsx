@@ -10,8 +10,7 @@ type PostPreviewProps = {
 
 const PostPreview: FC<PostPreviewProps> = ({
   post: { coverImage, coverImageMeta, date, slug, title, excerpt },
-}: PostPreviewProps) => {
-  return (
+}: PostPreviewProps) => (
     <div>
       <div className="mb-5">
         <CoverImage
@@ -34,6 +33,5 @@ const PostPreview: FC<PostPreviewProps> = ({
       <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
     </div>
   );
-};
 
 export default PostPreview;

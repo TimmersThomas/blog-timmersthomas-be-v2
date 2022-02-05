@@ -16,8 +16,7 @@ export const PostHeader: FC<Props> = ({
   coverImageMeta,
   date,
   author,
-}: Props) => {
-  return (
+}: Props) => (
     <>
       <PostTitle>{title}</PostTitle>
       <div className="hidden md:block md:mb-12">
@@ -28,7 +27,7 @@ export const PostHeader: FC<Props> = ({
           title={title}
           src={coverImage}
           imageMeta={coverImageMeta}
-          priority={true}
+          priority
           zoom={false}
         />
       </div>
@@ -42,6 +41,5 @@ export const PostHeader: FC<Props> = ({
       </div>
     </>
   );
-};
 
 export default PostHeader;
